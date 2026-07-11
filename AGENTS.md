@@ -1,4 +1,4 @@
-# site
+# Irigate website
 
 ## Purpose
 
@@ -11,7 +11,9 @@ Static Astro website for `https://irigate.io`, including product pages, public d
 - Astro pages, layouts, components, and styles own routing and presentation.
 - `public/` owns files copied directly into the deployed site.
 - `scripts/` owns website-specific generation and built-output verification.
-- Root `README.md`, `IMPLEMENTATION.md`, and `MARKET-RESEARCH.md` remain authoritative source material for behavior, architecture, and benchmark evidence.
+- `irigate/irigate-mcp-proxy` owns authoritative behavior, architecture, benchmark evidence, and source brand assets; this repository owns their public website representation.
+- `.github/workflows/` owns website validation and GitHub Pages deployment.
+- `GITHUB-PAGES.md` owns custom-domain setup, verification, operations, and rollback.
 
 ## Local Contracts
 
@@ -21,11 +23,11 @@ Static Astro website for `https://irigate.io`, including product pages, public d
 - Use Markdown for prose-heavy documentation and MDX only where reusable Astro components are needed.
 - Use framework-free JavaScript only for concrete interactions such as theme preference and command copying.
 - The theme preference key is `irigate.theme`; store only `light`, `dark`, or `system`, and apply the effective `light|dark` value as `data-theme` on the root element.
-- Keep `site/dist/`, `site/.astro/`, and `site/node_modules/` generated and untracked.
+- Keep `dist/`, `.astro/`, and `node_modules/` generated and untracked.
 - Keep dependency install scripts denied unless explicitly approved in `pnpm-workspace.yaml`; esbuild is the reviewed baseline exception required by Astro.
 - Bind development and preview servers to loopback unless an operator explicitly chooses otherwise.
-- Keep `public/logo.svg` and `public/logo-mark.svg` byte-for-byte synchronized from `assets/`; `public/favicon.svg` is a direct mark copy unless a later durable contract replaces it.
-- Keep `public/og-default.png` site-owned at exactly 1200x630; do not generate it from or by changing `assets/build_logo.py`.
+- Keep `public/logo.svg` and `public/logo-mark.svg` byte-for-byte synchronized from `irigate/irigate-mcp-proxy`'s `assets/`; `public/favicon.svg` is a direct mark copy unless a later durable contract replaces it.
+- Keep `public/og-default.png` site-owned at exactly 1200x630; do not generate it by changing the source repository's `assets/build_logo.py`.
 - Keep `public/CNAME` exactly `irigate.io` with one trailing newline; the built-site verifier treats it as required custom-domain intent.
 - Generate `robots.txt` and `llms.txt` from Astro endpoints using `Astro.site` and validated content metadata; keep `llms.txt` concise, ordered as `Docs`, `Evidence`, `Source`, `Optional`, and free of `GITHUB-PAGES.md`.
 - Emit JSON-LD only through `SeoHead.astro`: `SoftwareApplication` on the homepage and `FAQPage` on `/docs/faq/`; visible FAQ answers must match structured answers.
@@ -38,8 +40,8 @@ Static Astro website for `https://irigate.io`, including product pages, public d
 
 ## Verification
 
-- Run `corepack pnpm install --frozen-lockfile` from `site/`.
-- Run `corepack pnpm verify` from `site/`; it performs Astro type checking, production build, and deterministic built-site assertions.
+- Run `corepack pnpm install --frozen-lockfile` from the repository root.
+- Run `corepack pnpm verify` from the repository root; it performs Astro type checking, production build, and deterministic built-site assertions.
 - Preview with `corepack pnpm preview --host 127.0.0.1`.
 
 ## Child DOX Index
