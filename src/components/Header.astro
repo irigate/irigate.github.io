@@ -5,7 +5,7 @@ import ThemeSwitcher from "./ThemeSwitcher.astro";
 <header class="site-header">
   <div class="site-header__inner shell">
     <a class="brand" href="/" aria-label="Irigate home">
-      <span class="brand__mark" aria-hidden="true">I</span>
+      <img class="brand__mark" src="/logo-mark.svg" alt="" width="32" height="32" />
       <span class="brand__name">Irigate</span>
     </a>
     <nav class="site-nav" aria-label="Primary">
@@ -41,16 +41,9 @@ import ThemeSwitcher from "./ThemeSwitcher.astro";
   }
 
   .brand__mark {
-    display: inline-grid;
     width: 2rem;
     height: 2rem;
-    place-items: center;
-    border: 2px solid var(--color-accent);
-    border-radius: 50%;
-    color: var(--color-accent-strong);
-    font-family: var(--font-display);
-    font-weight: 700;
-    line-height: 1;
+    flex: 0 0 auto;
   }
 
   .brand__name {

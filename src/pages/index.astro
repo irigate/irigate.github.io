@@ -42,6 +42,49 @@ const { Content } = await render(entry);
     gap: var(--space-5);
   }
 
+  :global(.hero__lockup) {
+    width: min(100%, 25rem);
+    height: auto;
+  }
+
+  :global(.hero__proof) {
+    max-width: 42rem;
+    border-left: 3px solid var(--color-accent);
+    padding-left: var(--space-4);
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+  }
+
+  :global(.hero__proof strong) {
+    color: var(--color-text);
+  }
+
+  :global(.hero__visual) {
+    position: relative;
+    isolation: isolate;
+    min-width: 0;
+    padding: clamp(2rem, 7vw, 5rem) 0 0 clamp(1rem, 4vw, 3rem);
+  }
+
+  :global(.hero__visual > figure) {
+    position: relative;
+    z-index: 1;
+    box-shadow: var(--shadow-2);
+  }
+
+  :global(.hero__watermark) {
+    position: absolute;
+    z-index: 0;
+    top: -1.5rem;
+    right: -1rem;
+    width: clamp(11rem, 28vw, 19rem);
+    height: auto;
+    opacity: 0.22;
+    filter: saturate(0.85);
+    pointer-events: none;
+    user-select: none;
+  }
+
   :global(.section-heading p),
   :global(.steps li),
   :global(.quick-start p),
@@ -80,11 +123,21 @@ const { Content } = await render(entry);
     :global(.quick-start__grid),
     :global(.boundary-grid),
     :global(.final-cta) {
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 1fr);
     }
 
     :global(.final-cta .button) {
       justify-self: start;
+    }
+
+    :global(.hero__visual) {
+      padding-top: var(--space-7);
+      padding-left: 0;
+    }
+
+    :global(.hero__watermark) {
+      right: 0;
+      width: min(48vw, 13rem);
     }
   }
 </style>

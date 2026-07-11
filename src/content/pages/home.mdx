@@ -43,17 +43,24 @@ upstreams:
 
 <section class="hero section shell">
   <div class="hero__copy">
+    <img class="hero__lockup" src="/logo.svg" alt="" width="516" height="100" />
     <p class="eyebrow">Local MCP infrastructure</p>
     <h1>Share local MCP servers across your AI coding agents.</h1>
     <p class="lede">
       Irigate is a local MCP broker that lets AI coding agents connect to loopback Streamable HTTP while it supervises selected stdio MCP servers.
+    </p>
+    <p class="hero__proof">
+      Measured at 20 identical-context Context7 clients: <strong>95% fewer instances</strong> and <strong>94.7% lower resident memory</strong>.
     </p>
     <div class="button-row">
       <a class="button" data-variant="primary" href="/docs/getting-started/">Get started</a>
       <a class="button" href="https://github.com/irigate/irigate-mcp-proxy">View source</a>
     </div>
   </div>
-  <CodeBlock label="Current local run" code={quickStart} />
+  <div class="hero__visual">
+    <img class="hero__watermark" src="/logo-mark.svg" alt="" width="360" height="360" />
+    <CodeBlock label="Current local run" code={quickStart} />
+  </div>
 </section>
 
 <section class="section shell stack" id="architecture">
