@@ -11,7 +11,7 @@ Cutover is authorized by the resolved rows below. Recheck every operational fact
 | GitHub domain verification owner | Organization `irigate` owns and will verify `irigate.io`. | Verify the domain in the `irigate` organization before adding the custom domain. | Raphael Bossek — approved 2026-07-11 |
 | DNS provider and apex support | AWS Route 53 apex ALIAS is active. Recursive and all four authoritative nameservers return GitHub Pages A records `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, and `185.199.111.153`. No AAAA records are configured. | Retain the apex ALIAS and GitHub verification TXT record; recheck before Pages setup. | Raphael Bossek — configured and verified 2026-07-11 |
 | `www.irigate.io` redirect | `www.irigate.io` CNAME to `irigate.github.io` is active on recursive and all authoritative nameservers. | Retain the CNAME; GitHub Pages performs the redirect to the configured apex after Pages setup. | Raphael Bossek — configured and verified 2026-07-11 |
-| Pages availability | Repository is public and dedicated to the organization Pages site. GitHub Pages API returned HTTP 404 before setup. GitHub Pages is permitted and should be enabled. | Enable Pages with GitHub Actions as the source, then set `irigate.io` as the custom domain. | Raphael Bossek — approved 2026-07-11 |
+| Pages availability | Repository is public and dedicated to the organization Pages site. Pages uses `build_type: workflow`; `irigate.io` is verified; HTTPS enforcement is enabled. Deployment run `29155642608` completed successfully. | Retain GitHub Actions as the source and verify real build/deploy step conclusions after workflow changes. | Raphael Bossek — configured and verified 2026-07-11 |
 
 ## Control Surfaces
 
@@ -35,6 +35,8 @@ Cutover is authorized by the resolved rows below. Recheck every operational fact
 - Docker daemon for local `act` runs. On 2026-07-11 this checkout is blocked because no Docker socket is available; that does not validate the OIDC deployment path.
 
 ## First-Time GitHub Setup
+
+This setup was completed on 2026-07-11. Use the steps below to reconstruct or audit it.
 
 1. Resolve every Phase 0 authorization row with a named human operator.
 2. Verify `irigate.io` in the owning GitHub organization/account before DNS cutover. For the organization owner flow, use GitHub organization Settings -> Pages -> Add a domain, add GitHub's `_github-pages-challenge-ORGANIZATION.irigate.io` TXT record in DNS, confirm it with `dig`, then click Verify. Keep the TXT record after verification.
@@ -114,6 +116,8 @@ Local `act` runs do not validate GitHub Pages OIDC deployment, Pages environment
 ## Deployment
 
 The deploy workflow must exist on the pushed branch before manual dispatch can work.
+
+The first Actions-based custom-domain deployment completed successfully as run `29155642608` on 2026-07-11. The build and deploy jobs and every recorded step concluded `success`.
 
 First deployment:
 
